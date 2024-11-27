@@ -33,6 +33,7 @@ COST_PER_GB = 0.023
 detailsList= []
 inactiveLargeBucketList=[]
 costReport = {}
+inactiveBucketDic = {}
 todaysDate = date.today()
 threeMonthAgo = todaysDate - datetime.timedelta(days=91)
 twentyDaysAgo = todaysDate - datetime.timedelta(days=21)
@@ -54,14 +55,15 @@ for data in filedata["buckets"]:
     detailsList.append(Bucketdetails)
 
     creationDate = datetime.datetime.strptime(creationdate,"%Y-%m-%d").date()
-
     if ((int(size) > 80) and (creationDate < threeMonthAgo)):
-        inactiveLargeBucketDic = {
-            "BucketName":name,
-            "BucketSize":size,
-            "CreationDate":creationdate}
-    inactiveLargeBucketList.append(inactiveLargeBucketDic)
-    
+            inactiveBucketDic = {
+                "region": region,
+                "BucketName":name,
+                "BucketSize":size +"GB",
+                "CreationDate":creationdate}
+    if inactiveBucketDic not in inactiveLargeBucketList:
+            inactiveLargeBucketList.append(inactiveBucketDic) 
+
     cost = int(size) * COST_PER_GB
 
     if region not in costReport:
