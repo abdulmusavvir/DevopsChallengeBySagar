@@ -1,3 +1,5 @@
+#### setup.sh must be executed with sudo privileges i.e sudo su and then sh setup.sh ####
+
 ### Requirements: ###
 Service Setup: 
 
