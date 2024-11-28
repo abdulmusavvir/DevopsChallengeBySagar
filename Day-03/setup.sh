@@ -1,6 +1,12 @@
 #!/bin/bash
 set -xe
 
+# starting grafana and jenkins images
+echo "Starting Grafana and Jenkins docker images...."
+docker run -d --name=grafana -p 3000:3000 grafana/grafana
+docker run -d --name=jenkins -p 8080:8080 jenkins
+
+
 # Installing Nginx
 echo "Installing Nginx..."
 command -v nginx >/dev/null 2>&1
