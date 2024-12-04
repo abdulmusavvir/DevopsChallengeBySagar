@@ -22,7 +22,7 @@ pipeline{
         }
         stage('image Push'){
             steps{
-                withDockerRegistry(credentialsId: '12f766c2-ffca-4c23-a162-f5ca1b89142a', url: 'https://docker.io') {
+                withDockerRegistry(credentialsId: '12f766c2-ffca-4c23-a162-f5ca1b89142a', url: "") {
                     sh "docker push ${imageTobePush}:${env.BUILD_ID}"
                 }
             }
