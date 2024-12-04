@@ -1,4 +1,5 @@
 def imageName = 'flask-app'
+def repoName = 'DevopsChallengeBySagar/DAY-07'
 def imageTobePush = 'abdulmusavvirrohe/srechallenge-flaskapp'
 pipeline{
     agent any
@@ -10,7 +11,7 @@ pipeline{
         }
         stage('unit test'){
             steps{
-                sh "docker build -t ${imageName}:${env.BUILD_ID} -f ./Dockerfile ."
+                sh "docker build -t ${imageName}:${env.BUILD_ID} -f ${WORKSPACE}/${repoName}/Dockerfile ."
                 sh "docker run --rm ${imageName} pytest"
             }
         }
