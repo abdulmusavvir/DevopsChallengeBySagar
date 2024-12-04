@@ -22,4 +22,4 @@ Deploy the container locally, exposing it on port 5000.
 
 
 ### pipeline status ###
-![Application Status](https://github.com/abdulmusavvir/DevopsChallengeBySagar.git/DAY-07/application_status.png)
+![Application Status](https://github.com/abdulmusavvir/DevopsChallengeBySagar/blob/main/DAY-07/application_status.png)
