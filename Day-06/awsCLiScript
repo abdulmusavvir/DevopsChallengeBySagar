@@ -1,0 +1,21 @@
+aws ec2 create-image --instance-id i-0e81134af7abc6af7 --name testServerImage-20241202 --description "An AMI for testServer"
+
+aws ec2 copy-image  --region us-west-2  --name testServerImage-20241202  --source-region us-east-1  --source-image-id ami-0f5a12e380a90ef03  --description "This is my copied testWebserver AMI"
+
+
+
+aws ec2 create-snapshot --volume-id vol-0f0a371558a340d43 --description "snapshot of testServer ebs" --tag-specifications "ResourceT
+ype=snapshot,Tags=[{Key=name,Value=testSnapshot}]"
+
+
+aws ec2 copy-snapshot --region us-west-2  --source-region us-east-1  --source-snapshot-id snap-02dd54ed0c63dbe2f --description "This is my copied testWebserver EBS"
+
+
+
+aws configure set region us-west-2
+
+
+aws ec2 create-volume --volume-type gp3 --size 8 --snapshot-id snap-0d4f38b90dc172ae6 --availability-zone "us-west-2c"
+
+
+aws ec2 attach-volume --volume-id vol-09f045a9801045623 --instance-id i-0bd3487e9c0384be2 --device /dev/xvda
