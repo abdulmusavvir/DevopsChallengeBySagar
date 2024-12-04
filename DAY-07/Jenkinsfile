@@ -10,8 +10,9 @@ pipeline{
         }
         stage('unit test'){
             steps{
-                pwd
-                ls
+                ls -lrt
+            }
+            steps{
                 sh "docker build -t ${imageName}:${env.BUILD_ID} -f Dockerfile ."
                 sh "docker run --rm ${imageName} pytest"
             }
