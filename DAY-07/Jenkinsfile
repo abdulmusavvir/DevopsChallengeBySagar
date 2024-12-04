@@ -12,7 +12,7 @@ pipeline{
         stage('unit test'){
             steps{
                 sh "docker build -t ${imageName}:${env.BUILD_ID} -f ${dockerFilePath}/Dockerfile ."
-                sh "docker run --rm ${imageName} pytest"
+                sh "docker run --rm ${imageName}:${env.BUILD_ID} pytest"
             }
         }
         stage('image tagging'){
