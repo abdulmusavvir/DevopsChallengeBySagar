@@ -15,7 +15,9 @@ pipeline{
             }
         }
         stage('image tagging'){
-            sh "docker tag ${imageName}:${env.BUILD_ID} ${imageTobePush}:${env.BUILD_ID}"
+            steps{
+                sh "docker tag ${imageName}:${env.BUILD_ID} ${imageTobePush}:${env.BUILD_ID}"
+            }
         }
         stage('Image Push'){
             steps{
